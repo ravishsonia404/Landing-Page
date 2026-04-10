@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow p-4 flex justify-between">
+    <h1 class="text-xl font-bold">💼 SmartFinance AI</h1>
+    <a href="/" class="text-blue-600">Upload New File</a>
+  </header>
+
+  <section class="p-6">
+    <h2 class="text-2xl font-bold mb-6">📊 Financial Dashboard</h2>
+
+    <!-- PDF Button -->
+    <div class="mb-6 text-right">
+      <a href="/download" class="bg-purple-600 text-white px-4 py-2 rounded-xl">
+        📄 Download Report
+      </a>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <h3 class="text-gray-500">Revenue</h3>
+        <p class="text-2xl font-bold text-green-600">₹{{ revenue }}</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <h3 class="text-gray-500">Expenses</h3>
+        <p class="text-2xl font-bold text-red-600">₹{{ expenses }}</p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl shadow">
+        <h3 class="text-gray-500">Profit</h3>
+        <p class="text-2xl font-bold text-blue-600">₹{{ profit }}</p>
+      </div>
+
+    </div>
+
+    <!-- Chart -->
+    <div class="bg-white p-6 rounded-2xl shadow mb-10">
+      <h3 class="text-xl font-semibold mb-4">📊 Chart</h3>
+      <img src="{{ url_for('static', filename='chart.png') }}" class="mx-auto">
+    </div>
+
+    <!-- Table -->
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h3 class="text-xl font-semibold mb-4">📁 Data Preview</h3>
+      <div class="overflow-x-auto">
+        {{ table | safe }}
+      </div>
+    </div>
+
+  </section>
+
+</body>
+</html>
